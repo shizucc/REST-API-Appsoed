@@ -15,5 +15,6 @@ class Kost extends Model
         'images' => 'array',
         'type' => 'array',
         'facilities' => 'array',   
+        'rooms_type' => 'array',
     ];
 }

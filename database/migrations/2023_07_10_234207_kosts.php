@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('region');
             $table->text('address');
             $table->text('facilities');
-            $table->string('location');
+            $table->string('location')->nullable();
             $table->bigInteger('price_start_month')->nullable();
             $table->bigInteger('price_start_year')->nullable();
             $table->string('owner');
