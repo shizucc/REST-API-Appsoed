@@ -17,4 +17,8 @@ class Kost extends Model
         'facilities' => 'array',   
         'rooms_type' => 'array',
     ];
+
+    public function kostImage(){
+        return $this->hasMany(KostImage::class);
+    }
 }

@@ -33,13 +33,15 @@ class KostFactory extends Factory
             "region"=> fake()->randomElement(['Purwokerto','Purbalingga','Sokaraja']),
             "address" => fake()->address(),
             "facilities"=> [
+                "Kamar Tipe 1 : Kamar Mandi dalam, Free Wifi, Karoke, AC, Free Air, (10 Jt/bln)",
+                "Kamar Tipe 2 : Kamar Mandi dalam, Free Wifi, Karoke, AC, Free Air, Lapangan golf, Sarapan, Free listrik (16 Jt/bln)",
                 "AC",
                 "Kamar Mandi dalam",
                 "Lapangan Tenis",
                 "Security",
                 "Music 24 Jam"
             ],
-            "location"=> "Kode apalah yang ada di google maps",
+            "location"=> fake()->randomElement([null,'https://goo.gl/maps/R6NaDdHGNfaLwp4cA']) ,
             "price_start_month"=> fake()->randomElement([null,fake()->numberBetween(100000,400000)]),
             "price_start_year"=> fake()->randomElement([null,fake()->numberBetween(1000000,4000000)]),
             "owner"=> fake()->phoneNumber()

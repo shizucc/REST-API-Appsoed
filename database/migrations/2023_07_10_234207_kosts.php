@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            $table->text('images');
+            // $table->text('images');
             $table->string('region');
             $table->text('address');
             $table->text('facilities');
