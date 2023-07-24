@@ -1,10 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Kost;
-use App\Models\KostFacility;
-use App\Models\KostImage;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class KostController extends Controller
@@ -14,8 +12,18 @@ class KostController extends Controller
      */
     public function index()
     {
-        $kosts = Kost::with(['kostFacilities','kostImages'])->get();
-        return response()->json($kosts);
+        $data = [
+            'title' => 'All kosts'
+        ];
+        return view('admin.kosts.index',$data);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        //
     }
 
     /**
@@ -31,8 +39,15 @@ class KostController extends Controller
      */
     public function show(string $id)
     {
-        $kost  = Kost::with(['kostFacilities','kostImages'])->find($id);
-        return response()->json($kost);
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
     }
 
     /**
