@@ -15,13 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('type');
-            // $table->text('images');
             $table->string('region');
             $table->text('address');
-            $table->text('facilities');
             $table->string('location')->nullable();
-            $table->bigInteger('price_start_month')->nullable();
-            $table->bigInteger('price_start_year')->nullable();
+            $table->bigInteger('price_start')->nullable();
             $table->string('owner');
 
         });

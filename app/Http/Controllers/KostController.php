@@ -12,7 +12,7 @@ class KostController extends Controller
      */
     public function index()
     {
-        $kosts = Kost::all();
+        $kosts = Kost::with(['kostFacilities','kostImages'])->get();
         return response()->json($kosts);
     }
 
@@ -29,7 +29,7 @@ class KostController extends Controller
      */
     public function show(string $id)
     {
-        $kost  = Kost::find($id);
+        $kost  = Kost::with(['kostFacilities','kostImages'])->find($id);
         return response()->json($kost);
     }
 
