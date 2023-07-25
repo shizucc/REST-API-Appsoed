@@ -27,6 +27,7 @@ class KostFactory extends Factory
             "location"=> fake()->randomElement([null,'https://goo.gl/maps/R6NaDdHGNfaLwp4cA']) ,
             "price_start" =>fake()->numberBetween(1000000,3000000),
             "owner"=> fake()->phoneNumber()
+            
         ];
     }
 }

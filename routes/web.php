@@ -17,12 +17,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+    return redirect()->route('admin.kosts.index');
+})->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -31,13 +31,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-   Route::resource('/admin/kosts/', AdminKostController::class)->names([
+   Route::resource('/admin/kosts', AdminKostController::class)->except(['show','edit','update'])->names([
         'index' => 'admin.kosts.index',
         'create' => 'admin.kosts.create',
         'store' => 'admin.kosts.store',
-        'edit' => 'admin.kosts.edit',
-        'update' => 'admin.kosts.update',
-        'destroy' => 'admin.kosts.destroy'
+        'destroy' => 'admin.kosts.destroy',
+        // 'edit' => 'admin.kosts.edit',
+        // 'update' => 'admin.kosts.update',
    ]);
 });
 

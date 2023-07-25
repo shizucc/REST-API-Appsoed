@@ -48,6 +48,6 @@ class KostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        
     }
 }
