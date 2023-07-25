@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('location')->nullable();
             $table->bigInteger('price_start')->nullable();
             $table->string('owner');
+            $table->timestamps();
 
         });
     }

@@ -17,7 +17,8 @@ class KostController extends Controller
     public function index()
     {
         $data = [
-            'title' => 'All kosts'
+            'title' => 'All kosts',
+            'kosts' => Kost::with(['kostFacilities','kostImages'])->orderBy('created_at','desc')->get()
         ];
         return view('admin.kosts.index',$data);
     }
@@ -27,7 +28,10 @@ class KostController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => 'Create kosts'
+        ];
+        return view('admin.kosts.create',$data);
     }
 
     /**
@@ -100,8 +104,10 @@ class KostController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
+    public function destroy($id){
+        $kost = Kost::find($id);
+        $kost->delete();
+
+        return redirect()->route('admin.kosts.index');
     }
 }

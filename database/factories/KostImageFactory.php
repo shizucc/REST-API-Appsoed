@@ -18,9 +18,9 @@ class KostImageFactory extends Factory
     public function definition(): array
     {
         $images = [
-            Storage::url('images/kosts/kost_01.jpg'),
-            Storage::url('images/kosts/kost_02.jpg'),
-            Storage::url('images/kosts/kost_03.jpg')
+            Storage::url('images/kosts/aademo/kost_01.jpg'),
+            Storage::url('images/kosts/aademo/kost_02.jpg'),
+            Storage::url('images/kosts/aademo/kost_03.jpg')
         ];
         return [
             'kost_id' => fake()->numberBetween(1,50),
