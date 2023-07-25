@@ -13,8 +13,15 @@ class Kost extends Model
     protected $guarded =[];
     protected $casts =[
         'images' => 'array',
-        'type' => 'array',
+        // 'type' => 'array',
         'facilities' => 'array',   
         'rooms_type' => 'array',
     ];
+
+    public function kostImages(){
+        return $this->hasMany(KostImage::class);
+    }
+    public function kostFacilities(){
+        return $this->hasMany(KostFacility::class);
+    }
 }
