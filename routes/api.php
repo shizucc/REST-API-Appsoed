@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KostFacilityController;
+use App\Http\Controllers\KostImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,3 +19,4 @@ use Illuminate\Support\Facades\Route;
 
 Route::resource('/kos', KostController::class);
 Route::resource('/fasilitas/kos', KostFacilityController::class);
+Route::resource('/image/kos', KostImageController::class);
