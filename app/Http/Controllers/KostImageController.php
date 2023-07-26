@@ -32,6 +32,9 @@ class KostImageController extends Controller
         ], 200);
     }
 
+    public function show($id){
+        
+    }
     /**
      * Update the specified resource in storage.
      */

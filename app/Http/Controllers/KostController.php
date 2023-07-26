@@ -12,7 +12,7 @@ class KostController extends Controller
      */
     public function index()
     {
-        $kosts = Kost::with(['kostFacilities','kostImages'])->get();
+        $kosts = Kost::with(['kostFacilities','kostImages'])->orderBy('created_at','desc')->get();
         return response()->json($kosts);
     }
 
