@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Kost;
-use App\Models\KostFacility;
-use App\Models\KostImage;
 use Illuminate\Http\Request;
 
 class KostController extends Controller
@@ -23,7 +21,21 @@ class KostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:200',
+            'type' => 'required|max:200',
+            'region' => 'required|max:200',
+            'address' => 'required',
+            'location' => 'required',
+            'price_start' => 'required|integer',
+            'owner' => 'required',
+        ]);
+
+        $kost = Kost::create($request->all());
+        return response()->json([
+            'message'=> "Berhasil menambahkan data kost!",
+            'kost' => $kost,
+        ], 200);
     }
 
     /**
@@ -40,7 +52,19 @@ class KostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|max:200',
+            'type' => 'required|max:200',
+            'region' => 'required|max:200',
+            'address' => 'required',
+            'location' => 'required',
+            'price_start' => 'required|integer',
+            'owner' => 'required',
+        ]);
+        Kost::where('id', $id)->update($request->all());
+        return response()->json([
+            'message'=> "Berhasil mengubah data kost!"
+        ], 200);
     }
 
     /**
@@ -48,6 +72,9 @@ class KostController extends Controller
      */
     public function destroy(string $id)
     {
-        
+        Kost::destroy($id);
+        return response()->json([
+            'message'=> "Berhasil menghapus data kost!"
+        ], 200);
     }
 }
