@@ -8,6 +8,7 @@ use App\Models\KostFacility;
 use App\Models\KostImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class KostController extends Controller
 {
@@ -64,11 +65,32 @@ class KostController extends Controller
         // Lopping untuk menyimpan gamber
         if($request->hasFile('images')){
             foreach($request->file('images') as $image){
-                $path_folder = str_replace(' ','',$kost->name);
-                $path_image = Storage::url($image->store('images/kosts/'.$path_folder,'public'));
+                // // Menyimpan foto ke folder
+                // $path_folder = 'storage/images/kosts/'.str_replace(' ','',$kost->name);
+                // // $path_image = Storage::url($image->store('images/kosts/'.$path_folder,'public'));
+
+                // $path = public_path($path_folder);
+                // $file_name = $image->getClientOriginalName();
+                // $image->move($path,$file_name);
+                
+                // // Menyimpan foto ke database
+                // $kost_image = new KostImage;
+                // $kost_image->kost_id = $kost->id;
+                // $kost_image->image = $path_folder.'/'.$file_name;
+
+                // $kost_image->save();
+
+
+                // Menyimpan foto ke folder
+                $path_folder = public_path('/storage/images/kost');
+                $kost_name = str_replace(' ','', Kost::find($kost->id)->name);
+                $file_name = $kost_name.'_'. str_replace(' ','', $image->getClientOriginalName());
+                $image->move($path_folder, $file_name);
+
+                // Menyimpan foto ke database
                 $kost_image = new KostImage;
-                $kost_image->image = $path_image;
                 $kost_image->kost_id = $kost->id;
+                $kost_image->image = $file_name;
 
                 $kost_image->save();
             }
@@ -106,6 +128,18 @@ class KostController extends Controller
      */
     public function destroy($id){
         $kost = Kost::find($id);
+        $images = KostImage::where('kost_id',$id)->pluck('image')->toArray();
+        
+        // Menghapus gambar di file manager
+        // foreach($images as $image){
+        //     if($image!=null){
+        //         $path = public_path($image);
+        //         if(File::exists($path)){
+        //             File::delete($path);
+        //         }
+                
+        //     }
+        // }
         $kost->delete();
 
         return redirect()->route('admin.kosts.index');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\KostImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class KostImageController extends Controller
 {
@@ -32,8 +33,12 @@ class KostImageController extends Controller
         ], 200);
     }
 
-    public function show($id){
-        
+    public function show($img){
+        $filePath = public_path('storage/images/kost/'.$img);
+        if(!file_exists($filePath)){
+            abort(404);
+        }
+        return response()->file($filePath);
     }
     /**
      * Update the specified resource in storage.

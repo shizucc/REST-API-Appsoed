@@ -19,8 +19,13 @@ class DatabaseSeeder extends Seeder
             'email' => 'medkominfo22@gmail.com',
             'password' => 'medkom2023',
         ]);
-        \App\Models\Kost::factory(50)->create();
-        \App\Models\KostFacility::factory(150)->create();
-        \App\Models\KostImage::factory(100)->create();
+        \App\Models\User::factory()->create([
+            'name' => 'ayaya',
+            'email' => 'ayaya@gmail.com',
+            'password' => 'ayaya2809',
+        ]);
+        // \App\Models\Kost::factory(50)->create();
+        // \App\Models\KostFacility::factory(150)->create();
+        // \App\Models\KostImage::factory(100)->create();
     }
 }
