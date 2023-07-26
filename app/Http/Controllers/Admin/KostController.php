@@ -73,7 +73,7 @@ class KostController extends Controller
                 $kost_image->save();
             }
         }
-        return redirect()->route('kosts.show',$kost->id);
+        return redirect()->route('kost.show',$kost->id);
 
     }
 

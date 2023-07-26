@@ -9,6 +9,7 @@
     </title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('DataTables/datatables.min.css')}}">
+    @yield('extra_styles')
 </head>
 <body>
     <div style="margin-top: 20px">

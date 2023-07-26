@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\KostController as AdminKostController;
 use App\Http\Controllers\KostController;
+use App\Http\Controllers\KostImageController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,6 +42,4 @@ Route::middleware(['auth'])->group(function(){
    ]);
 });
 
-Route::get('/kosts', [KostController::class,'index'])->name('kosts.index');
-Route::get('/kosts/{id}', [KostController::class,'show'])->name('kosts.show');
 require __DIR__.'/auth.php';

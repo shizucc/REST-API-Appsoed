@@ -17,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/kos', KostController::class);
-Route::resource('/fasilitas/kos', KostFacilityController::class);
-Route::resource('/image/kos', KostImageController::class);
+Route::resource('/kost', KostController::class);
+Route::resource('/kost/facility', KostFacilityController::class)->names([
+    'index' => 'kost.facility.index',
+    'create' => 'kost.facility.create',
+    'show' => 'kost.facility.show',
+    'edit' => 'kost.facility.edit',
+    'update' => 'kost.facility.update',
+    'delete' => 'kost.facility.delete',
+]);
+Route::resource('/kost/image', KostImageController::class)->names([
+    'index' => 'kost.image.index',
+    'create' => 'kost.image.create',
+    'show' => 'kost.image.show',
+    'edit' => 'kost.image.edit',
+    'update' => 'kost.image.update',
+    'delete' => 'kost.image.delete',
+]);
