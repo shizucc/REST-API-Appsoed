@@ -7,8 +7,6 @@ use App\Models\Kost;
 use App\Models\KostFacility;
 use App\Models\KostImage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\File;
 
 class KostController extends Controller
 {
@@ -65,22 +63,6 @@ class KostController extends Controller
         // Lopping untuk menyimpan gamber
         if($request->hasFile('images')){
             foreach($request->file('images') as $image){
-                // // Menyimpan foto ke folder
-                // $path_folder = 'storage/images/kosts/'.str_replace(' ','',$kost->name);
-                // // $path_image = Storage::url($image->store('images/kosts/'.$path_folder,'public'));
-
-                // $path = public_path($path_folder);
-                // $file_name = $image->getClientOriginalName();
-                // $image->move($path,$file_name);
-                
-                // // Menyimpan foto ke database
-                // $kost_image = new KostImage;
-                // $kost_image->kost_id = $kost->id;
-                // $kost_image->image = $path_folder.'/'.$file_name;
-
-                // $kost_image->save();
-
-
                 // Menyimpan foto ke folder
                 $path_folder = public_path('/storage/images/kost');
                 $kost_name = str_replace(' ','', Kost::find($kost->id)->name);
@@ -104,7 +86,7 @@ class KostController extends Controller
      */
     public function show(string $id)
     {
-        //
+        
     }
 
     /**
@@ -112,7 +94,12 @@ class KostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $data = [
+            'kost' => Kost::with(['kostFacilities','kostImages'])->find($id),
+            'title' => 'Edit Kost'
+        ];
+        // dd(Kost::with(['kostFacilities','kostImages'])->find($id));
+        return view('admin.kosts.edit',$data);
     }
 
     /**
@@ -120,7 +107,10 @@ class KostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request);
+        // update fasilitas : hapus semua fasilitas lalu ganti dengan yang baru
+
+        // update images : cek apabila ada image yang dihapus, cek apabila ada image yang diup, up image baru
     }
 
     /**
