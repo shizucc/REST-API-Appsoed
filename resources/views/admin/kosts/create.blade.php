@@ -38,7 +38,7 @@
                 <input type="number" min=1  name="price_start" class="form-control" id="priceKost" required>
             </div>
             <div class="mb-1">
-                <label for="ownerKost" class="form-label">No HP Pemilik</label>
+                <label for="ownerKost" class="form-label">No HP Pemilik -Satu nomor-</label>
                 <input type="text" name="owner" class="form-control" id="ownerKost" required>
             </div>
             <div class="mb-4">

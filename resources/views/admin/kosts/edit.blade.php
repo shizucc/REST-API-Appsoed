@@ -38,7 +38,7 @@
                 <input type="number" value="{{$kost->price_start}}" min=1  name="price_start" class="form-control" id="priceKost" required>
             </div>
             <div class="mb-1">
-                <label for="ownerKost" class="form-label">No HP Pemilik</label>
+                <label for="ownerKost" class="form-label">No HP Pemilik -Satu nomor-</label>
                 <input type="text" value="{{$kost->owner}}" name="owner" class="form-control" id="ownerKost" required>
             </div>
 
@@ -46,25 +46,27 @@
             <div class="mb-4">
                 {{-- Looping Foto --}}
                 <label for="imageKost" class="form-label">Foto Kost</label>
+                <p>Prosedur Mengubah Foto Kost</p>
+                <ol>
+                    <li>Hapus Foto yang ingin diubah dengan mencentang 'delete'</li>
+                    <li>Klik "Tambah Jumlah Foto" dan upload foto yang baru</li>
+                </ol>
+                <p>Note : Jika hanya ingin menambah foto, klik "Tambah Jumlah Foto" lalu upload foto</p>
                 <button id="plusImageKost" type="button" class="btn btn-primary">Tambah Jumlah Foto</button>
                 <br>
                 
                 @if ($kost->kostImages != [])
-                    <div style="display: flex; flex-direction:row">
+                    <div style="display: flex; flex-direction:column; margin-top:20px ">
                     @foreach ($kost->kostImages as $image)
-                    <div style="display: flex; flex-direction:column; margin-bottom:20px">
+                    <div style="display: flex; flex-direction:column; margin-bottom:20px; margin-right:20px">
                         <div>
                                 <img style="height: 150px" src="{{asset('storage/images/kost/'.$image->image)}}" alt="{{$image->image}}">
-                            </div>
-                            <div style="display:flex; flex-direction:row">
-                                <p>Ganti </p>
-                                <input id="imageKost" type="file" name="images[]" multiple><br>
                             </div>
                             <div style="display:flex; flex-direction:row">
                                 <label class="form-check-label" for="flexCheckDefault">
                                   Delete :
                                 </label>
-                                    <input class="form-check-input" type="checkbox" value="{{$image}}" name="deleteImages[]" id="flexCheckDefault" multiple>
+                                    <input class="form-check-input" type="checkbox" value="{{$image->id}}" name="deleteImages[]" id="flexCheckDefault" multiple>
                             </div>
                             
                         </div>
@@ -81,6 +83,10 @@
             <div class="mb-1">
                 {{-- Lopping Fasilitas Kost --}}
                 <label for="facilityKost" class="form-label">Fasilitas Kost</label>
+                <p>Prosedur Ubah Fasilitas Kost</p>
+                <ol>
+                    <li>Kalau mau ubah tinggal ubah, kalau mau tambah tinggal 'Tambah Fasilitas Kost'</li>
+                </ol>
                 <button id="plusFacilityKost" type="button" class="btn btn-primary">Tambah Fasilitas Kost</button>
                 <br>
                 
