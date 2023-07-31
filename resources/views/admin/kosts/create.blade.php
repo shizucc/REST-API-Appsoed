@@ -35,11 +35,11 @@
             </div>
             <div class="mb-1">
                 <label for="priceKost" class="form-label">Harga terendah</label>
-                <input type="number" min=1  name="price_start" class="form-control" id="priceKost" required>
+                <input type="number" min=0  name="price_start" class="form-control" id="priceKost" required>
             </div>
             <div class="mb-1">
                 <label for="ownerKost" class="form-label">No HP Pemilik -Satu nomor-</label>
-                <input type="text" name="owner" class="form-control" id="ownerKost" required>
+                <input type="text" name="owner" class="form-control" id="ownerKost">
             </div>
             <div class="mb-4">
                 <label for="imageKost" class="form-label">Foto Kost</label>
