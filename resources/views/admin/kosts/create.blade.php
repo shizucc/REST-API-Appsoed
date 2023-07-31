@@ -60,7 +60,7 @@
                     <li>Gunakan 08 jangan +62</li>
                     <li>Jika tidak tahu isikan dengan 0</li>
                 </ul>
-                <input type="text" name="owner" class="form-control" id="ownerKost">
+                <input type="text" name="owner" class="form-control" id="ownerKost" required>
             </div>
             <div class="mb-4">
                 <label for="imageKost" class="form-label"><h4>Foto Kost</h4></label>
