@@ -123,12 +123,15 @@ class KostController extends Controller
         // Hapus semua fasilitas
         KostFacility::where('kost_id',$id)->delete();
 
-        foreach($request->input('facilities') as $facility){
-            if($facility != null){
-                $kost_facility = new KostFacility;
-                $kost_facility->facility = $facility;
-                $kost_facility->kost_id = $kost->id;
-                $kost_facility->save();
+        if($request->has('facilites')){
+
+            foreach($request->input('facilities') as $facility){
+                if($facility != null){
+                    $kost_facility = new KostFacility;
+                    $kost_facility->facility = $facility;
+                    $kost_facility->kost_id = $kost->id;
+                    $kost_facility->save();
+                }
             }
         }
         
