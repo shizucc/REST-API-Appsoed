@@ -32,13 +32,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-   Route::resource('/admin/kosts', AdminKostController::class)->except(['show','edit','update'])->names([
+   Route::resource('/admin/kosts', AdminKostController::class)->except(['show'])->names([
         'index' => 'admin.kosts.index',
         'create' => 'admin.kosts.create',
         'store' => 'admin.kosts.store',
         'destroy' => 'admin.kosts.destroy',
-        // 'edit' => 'admin.kosts.edit',
-        // 'update' => 'admin.kosts.update',
+        'edit' => 'admin.kosts.edit',
+        'update' => 'admin.kosts.update',
    ]);
 });
 

@@ -55,6 +55,9 @@
                                 <div style="margin-right: 5px">
                                     <a type="button" class="btn btn-primary" href="{{route('kost.show',$kost->id)}}">Detail</a>
                                 </div>
+                                <div style="margin-right: 5px">
+                                    <a type="button" class="btn btn-warning" href="{{route('admin.kosts.edit',$kost->id)}}">Edit</a>
+                                </div>
                                 <div>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{$kost->id}}">
                                         Hapus
