@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faculty;
+use App\Models\Comic;
 use Illuminate\Http\Request;
 
-class FacultyController extends Controller
+class ComicController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
-
+        $comics = Comic::with('comicImages')->get();
+        return response()->json($comics);
     }
 
     /**
@@ -38,8 +37,8 @@ class FacultyController extends Controller
      */
     public function show(string $id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $comic = Comic::with('comicImages')->find($id);
+        return response()->json($comic);
     }
 
     /**
@@ -67,10 +66,12 @@ class FacultyController extends Controller
     }
 
     public function image(string $img){
-        $filePath = public_path('storage/images/faculty/'.$img);
+        $filePath = public_path('storage/images/comic/'.$img);
         if(!file_exists($filePath)){
             abort(404);
         }
         return response()->file($filePath);
     }
+    
+
 }

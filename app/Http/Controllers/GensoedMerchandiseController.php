@@ -2,19 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Faculty;
 use Illuminate\Http\Request;
+use App\Models\GensoedMerchandise;
 
-class FacultyController extends Controller
+class GensoedMerchandiseController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $faculties = Faculty::all();
-        return response()->json($faculties);
-
+        $merchandises = GensoedMerchandise::all();
+        return response()->json($merchandises);
     }
 
     /**
@@ -38,8 +37,8 @@ class FacultyController extends Controller
      */
     public function show(string $id)
     {
-        $faculty = Faculty::find($id);
-        return response()->json($faculty);
+        $merchandise = GensoedMerchandise::find($id);
+        return response()->json($merchandise);
     }
 
     /**
@@ -65,9 +64,8 @@ class FacultyController extends Controller
     {
         //
     }
-
     public function image(string $img){
-        $filePath = public_path('storage/images/faculty/'.$img);
+        $filePath = public_path('storage/images/gensoedmerchandise/'.$img);
         if(!file_exists($filePath)){
             abort(404);
         }

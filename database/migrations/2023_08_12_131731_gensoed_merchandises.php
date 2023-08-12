@@ -11,11 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comic_images', function (Blueprint $table) {
+        Schema::create('gensoed_merchandises', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('comic_id');
-            $table->string('image');
-            $table->foreign('comic_id')->references('id')->on('comics')->onDelete('cascade');
+            $table->string('name');
+            $table->string('image')->nullable();
+            $table->bigInteger('price_start');
+            $table->bigInteger('price_end')->nullable();
+            $table->string('product_link')->nullable();
         });
     }
 

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ComicController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\GensoedMerchandiseController;
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KostFacilityController;
 use App\Http\Controllers\KostImageController;
@@ -37,4 +39,11 @@ Route::resource('/kost/image', KostImageController::class)->names([
 Route::resource('/kost', KostController::class);
 
 
+Route::get('/faculty/image/{img}', [FacultyController::class, 'image'])->name('faculty.image');
 Route::resource('/faculty', FacultyController::class)->only(['index','show']);
+
+Route::get('/comic/image/{img}', [ComicController::class, 'image'])->name('comic.image');
+Route::resource('/comic', ComicController::class)->only(['index','show']);
+
+Route::get('/gensoedmerch/image/{img}', [GensoedMerchandiseController::class, 'image'])->name('gensoedmerch.image');
+Route::resource('/gensoedmerch', GensoedMerchandiseController::class)->only(['index','show']);

@@ -25,6 +25,9 @@ class DatabaseSeeder extends Seeder
             'password' => 'ayaya2809',
         ]);
         \App\Models\Faculty::factory(18)->create();
+        \App\Models\Comic::factory(10)->create();
+        \App\Models\ComicImage::factory(40)->create();
+        \App\Models\GensoedMerchandise::factory(30)->create();
         // \App\Models\Kost::factory(50)->create();
         // \App\Models\KostFacility::factory(150)->create();
         // \App\Models\KostImage::factory(100)->create();

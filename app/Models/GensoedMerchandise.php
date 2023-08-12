@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ComicImage extends Model
+class GensoedMerchandise extends Model
 {
     use HasFactory;
-    protected $table = 'comic_images';
+    protected $table = 'gensoed_merchandises';
     protected $guarded = [];
     public $timestamps = false;
 
-    public function Comic(){
-        return $this->belongsTo(Comic::class);
-    }
 }
