@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faculty;
 use Illuminate\Http\Request;
 
 class FacultyController extends Controller
@@ -12,7 +13,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        
+        $faculty = Faculty::all();
     }
 
     /**
@@ -20,7 +21,10 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => 'Create Faculty'
+        ];
+        return view('admin.faculty.create',$data);
     }
 
     /**

@@ -30,7 +30,45 @@ class FacultyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    
+        $request->validate([
+            'name' => 'required|max:150',
+            'alias' => 'required'
+        ]);
+
+        $faculty = new Faculty;
+        $faculty->name = $request->input('name');
+        $faculty->location = $request->input('location');
+        $faculty->alias = $request->input('alias');
+        $faculty->description = $request->input('description');
+        $faculty->instagram_link = $request->input('instagram_link');
+        $faculty->youtube_link = $request->input('youtube_link');
+        $faculty->line_link = $request->input('line_link');
+        $faculty->twitter_link = $request->input('twitter_link');
+        $faculty->spotify_link = $request->input('spotify_link');
+        $faculty->tiktok_link = $request->input('tiktok_link');
+        $faculty->website_link = $request->input('website_link');
+
+        
+        if($request->hasFile('image')){
+            // Save image into storage
+            $image = $request->file('image');
+
+            $path_folder = public_path('/storage/images/faculty');
+            $image_name = str_replace(' ','', $request->input('name'));
+            $file_name = $image_name.'_'.str_replace(' ','', $image->getClientOriginalName());
+            $image->move($path_folder,$file_name);
+            
+            // save image into database
+            $domain = 'localhost:8000';
+            $image_url = $domain."/api/faculty/image/".$file_name;
+            $faculty->image = $image_url;
+            
+        }
+        $faculty->save();
+
+        return redirect()->route('faculty.index');
+        
     }
 
     /**

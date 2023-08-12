@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\Admin\KostController as AdminKostController;
+use App\Http\Controllers\Admin\KostController as AdminKostController; 
+use App\Http\Controllers\Admin\FacultyController as AdminFacultyController; 
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KostImageController;
 use App\Http\Controllers\ProfileController;
@@ -39,6 +40,11 @@ Route::middleware(['auth'])->group(function(){
         'destroy' => 'admin.kosts.destroy',
         'edit' => 'admin.kosts.edit',
         'update' => 'admin.kosts.update',
+   ]);
+   Route::resource('/admin/faculty', AdminFacultyController::class)->only(['index','create','edit'])->names([
+    'index' => 'admin.faculty.index',
+    'create' => 'admin.faculty.create',
+    'edit' => 'admin.faculty.edit',
    ]);
 });
 
