@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'ayaya@gmail.com',
             'password' => 'ayaya2809',
         ]);
+        \App\Models\Faculty::factory(18)->create();
         // \App\Models\Kost::factory(50)->create();
         // \App\Models\KostFacility::factory(150)->create();
         // \App\Models\KostImage::factory(100)->create();

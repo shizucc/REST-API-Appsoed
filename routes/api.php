@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KostFacilityController;
 use App\Http\Controllers\KostImageController;
@@ -34,3 +35,6 @@ Route::resource('/kost/image', KostImageController::class)->names([
     'delete' => 'kost.image.delete',
 ]);
 Route::resource('/kost', KostController::class);
+
+
+Route::resource('/faculty', FacultyController::class)->only(['index','show']);
