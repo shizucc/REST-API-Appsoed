@@ -40,7 +40,7 @@ Route::resource('/kost', KostController::class);
 
 
 Route::get('/faculty/image/{img}', [FacultyController::class, 'image'])->name('faculty.image');
-Route::resource('/faculty', FacultyController::class)->only(['index','show','store']);
+Route::resource('/faculty', FacultyController::class)->except(['show,edit']);
 
 Route::get('/comic/image/{img}', [ComicController::class, 'image'])->name('comic.image');
 Route::resource('/comic', ComicController::class)->only(['index','show']);

@@ -17,7 +17,7 @@ class FacultyFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => "Fakultas".fake()->sentence(),
+            'name' => "Fakultas ".fake()->sentence(),
             'alias' => "Fa".fake()->sentence(3),
             'location' => fake()->randomElement([null,'https://goo.gl/maps/R6NaDdHGNfaLwp4cA']) ,
             'image' => fake()->randomElement([null,"https://images.unsplash.com/photo-1691064057997-ffe2483ab125?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=827&q=80"]),

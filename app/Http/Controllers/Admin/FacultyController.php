@@ -13,7 +13,12 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculty = Faculty::all();
+        $faculties = Faculty::all();
+        $data = [
+            'title' => 'All Faculty',
+            'faculties' => Faculty::all()
+        ];
+        return view('admin.faculty.index',$data);
     }
 
     /**
@@ -48,7 +53,12 @@ class FacultyController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $faculty = Faculty::find($id);
+        $data = [
+            'title' => 'Edit Faculty',
+            'faculty' => $faculty
+        ];
+        return view('admin.faculty.edit',$data);
     }
 
     /**
@@ -56,7 +66,7 @@ class FacultyController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        dd($request);
     }
 
     /**
