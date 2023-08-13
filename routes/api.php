@@ -43,7 +43,7 @@ Route::get('/faculty/image/{img}', [FacultyController::class, 'image'])->name('f
 Route::resource('/faculty', FacultyController::class)->except(['show,edit']);
 
 Route::get('/comic/image/{img}', [ComicController::class, 'image'])->name('comic.image');
-Route::resource('/comic', ComicController::class)->only(['index','show']);
+Route::resource('/comic', ComicController::class)->except(['edit']);
 
 Route::get('/gensoedmerch/image/{img}', [GensoedMerchandiseController::class, 'image'])->name('gensoedmerch.image');
 Route::resource('/gensoedmerch', GensoedMerchandiseController::class)->only(['index','show']);
