@@ -26,7 +26,10 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'title' => "Create Comic"
+        ];
+        return view('admin.comic.create', $data);
     }
 
     /**
