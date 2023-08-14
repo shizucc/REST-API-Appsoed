@@ -16,7 +16,7 @@
                     <li>Tulis Judul Lengkap Komik</li>
                     <li>Ex : Naruto Shippuden, Petualangan Medkom</li>
                 </ul>
-                <input type="text" name="name" class="form-control" id="nameComic" required>
+                <input type="text" name="title" class="form-control" id="nameComic" required>
             </div>
             <div class="mb-5">
                 <label for="coverComic" class="form-label"><h4>Cover</h4></label>

@@ -31,11 +31,10 @@ class ComicController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'cover' => 'required',
         ]);
         $comic = new Comic;
         $comic->title = $request->input('title');
-        
+
         if($request->hasFile('cover')){
             // Save image into storage
             $image = $request->file('cover');
@@ -49,8 +48,9 @@ class ComicController extends Controller
             $comic->cover = $file_name;
             
         }
+        
         $comic->save();
-        return redirect('admin.comic.index');
+        return redirect()->route('admin.comic.index');
 
     }
 
