@@ -172,6 +172,29 @@ class ComicController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $comic = Comic::find($id);
+        $comic_images = ComicImage::where('comic_id',$id)->get()->pluck('image')->toArray();
+        
+        // Delete cover in storage
+        if($comic->cover != null){
+            $cover_path = public_path('/storage/images/comic/cover/'.$comic->cover);
+            if(File::exists($cover_path)){
+                File::delete($cover_path);
+            }
+        }
+        // Delete all comic images in storage 
+        if($comic_images != []){
+            
+            foreach($comic_images as $image){
+                $image_path = public_path('/storage/images/comic/content/'.$image);
+                if(File::exists($image_path)){
+                    File::delete($image_path);
+                }
+            }
+            // Delete all comic images in database
+            ComicImage::where('comic_id',$id)->delete();
+        }
+        $comic->delete();
+        return redirect()->route('admin.comic.index');
     }
 }

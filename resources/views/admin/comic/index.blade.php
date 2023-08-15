@@ -29,7 +29,7 @@
             @method('post')
             <button type="submit" href="{{route('logout')}}">Logout</button> 
         </form>
-        <h1>Semua Fakultas</h1>
+        <h1>Semua Komik</h1>
         <a type="button" class="btn btn-primary" href="{{route('admin.comic.create')}}">Tambah Komik</a>
         <table class="bordered-table" id="kostTable">
             <thead>
@@ -77,7 +77,7 @@
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                            <form action="{{route('comic.destroy',$comic->id)}}" method="post">
+                            <form action="{{route('admin.comic.destroy',$comic->id)}}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Hapus</button>
