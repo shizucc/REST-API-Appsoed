@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\KostController as AdminKostController; 
 use App\Http\Controllers\Admin\FacultyController as AdminFacultyController; 
 use App\Http\Controllers\Admin\ComicController as AdminComicController;
+use App\Http\Controllers\Admin\GensoedMerchandiseController as AdminGensoedMerchandiseController;
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KostImageController;
 use App\Http\Controllers\ProfileController;
@@ -55,6 +56,15 @@ Route::middleware(['auth'])->group(function(){
     'destroy' => 'admin.comic.destroy',
     'edit' => 'admin.comic.edit',
     'update' => 'admin.comic.update',
+   ])->except('show');
+
+   Route::resource('/admin/gensoedmerch', AdminGensoedMerchandiseController::class)->names([
+    'index' => 'admin.gensoedmerch.index',
+    'create' => 'admin.gensoedmerch.create',
+    'store' => 'admin.gensoedmerch.store',
+    'destroy' => 'admin.gensoedmerch.destroy',
+    'edit' => 'admin.gensoedmerch.edit',
+    'update' => 'admin.gensoedmerch.update',
    ])->except('show');
 });
 

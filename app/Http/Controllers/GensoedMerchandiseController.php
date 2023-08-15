@@ -65,7 +65,7 @@ class GensoedMerchandiseController extends Controller
         //
     }
     public function image(string $img){
-        $filePath = public_path('storage/images/gensoedmerchandise/'.$img);
+        $filePath = public_path('storage/images/gensoedmerch/'.$img);
         if(!file_exists($filePath)){
             abort(404);
         }
