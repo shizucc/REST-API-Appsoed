@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Comic;
 use App\Models\ComicImage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class ComicController extends Controller
 {
@@ -104,7 +105,66 @@ class ComicController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'title'=> 'required'
+        ]);
+        $comic = Comic::find($id);
+        $comic->title = $request->input('title');
+
+        // Check if has the new cover for update
+        if($request->hasFile('cover')){
+            // Delete old Cover in storage
+            $old_cover_name = $comic->cover;
+            $cover_path = public_path('/storage/images/comic/cover/'.$old_cover_name);
+            if(File::exists($cover_path)){
+                File::delete($cover_path);
+            }
+
+            // Store new Cover in storage
+            $cover = $request->file('cover');
+            $cover_name = str_replace(' ','', $comic->title);
+            $path_folder = public_path('/storage/images/comic/cover');
+
+            $file_name = $cover_name.'_'.str_replace(' ','',$cover->getClientOriginalName());
+            $cover->move($path_folder,$file_name);
+
+            // Update new cover in database
+            $comic->cover = $file_name;
+        }
+
+        if($request->hasFile('images')){
+            // Delete all comic images in storage that relates to this comic
+            $old_images = ComicImage::where('comic_id',$id)->get()->pluck('image')->toArray();
+
+            // Loop for delete all old comic images in storage
+
+            foreach($old_images as $image){
+                $old_image_path = public_path('/storage/images/comic/content/' . $image);
+                if(File::exists($old_image_path)){
+                    File::delete($old_image_path);
+                }
+            }
+
+            // Delete all old comic images in database
+            ComicImage::where('comic_id',$id)->delete();
+
+            // Loop for store all new comic images in storage and database
+            $comic_title = str_replace(' ', '', $comic->title);
+            $path_folder = public_path('/storage/images/comic/content');
+            foreach ($request->file('images') as $image) {
+                $img_name = $comic_title.'_'.str_replace(' ','', $image->getClientOriginalName());
+                $image->move($path_folder,$img_name);
+
+                $comic_image = new ComicImage;
+                $comic_image->comic_id = $comic->id;
+                $comic_image->image = $img_name;
+
+                $comic_image->save();
+            }
+        }
+
+        $comic->save();
+        return redirect()->route('admin.comic.index');
     }
 
     /**

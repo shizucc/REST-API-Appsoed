@@ -4,11 +4,12 @@
 @endsection
 @section('content')
 <div style="width:40%; margin:0 auto">
+    
         <a type="button" class="btn btn-secondary" href="{{route('admin.comic.index')}}">Kembali</a>
         <h1>Form Edit Komik</h1>
-    <form action="{{route('admin.comic.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.comic.update',$comic->id)}}" method="post" enctype="multipart/form-data">
         @csrf
-        @method('post')
+        @method('put')
             <div class="mb-2">
                 <label for="nameComic" class="form-label"><h4>Judul Komik</h4></label>
                 <p>Panduan mengisi nama</p>
@@ -29,7 +30,7 @@
                     <img src="{{asset('storage/images/comic/cover/'.$comic->cover) }}" alt="" height="100px">
                 </div>
                 <span>Ubah Cover : </span>
-                <input id="coverComic" type="file" name="cover" accept="image/*" required><br>
+                <input id="coverComic" type="file" name="cover" accept="image/*" ><br>
             </div>
 
             <div class="mb-4">
@@ -39,39 +40,36 @@
                     <li>Komik harus berupa gambar</li>
                     <li>Upload gambar secara urut</li>
                     <li>Jika kelebihan menekan "Tambah Jumlah Isi" tidak masalah</li>
-                    <li>Jika ingin mengubah gambar di tengah-tengah maka harus ubah semua isi</li>
-                    <li>Jika ingin menambah gambar di akhir bisa langsung Klik "Tambah Jumlah isi"</li>
                 </ul>
-                
-                <h5>Isi Saat ini</h5>
-                
-                @if ($comic->comicImages != [])
-                    <div style="display: flex; flex-direction:column; margin-top:20px ">
+                <div>
+                    <h5>Isi Saat Ini : </h5>
+                    @if ($comic->comicImages != [])
+                    <div class="display: flex; flex-direction:column; margin-bottom:20px; margin-right:20px">
                         @foreach ($comic->comicImages as $image)
-                    <div style="display: flex; flex-direction:column; margin-bottom:20px; margin-right:20px">
-                        <div>   
-                           
+                            <div>
                                 <img style="height: 150px" src="{{asset('storage/images/comic/content/'.$image->image)}}" alt="{{$image->image}}">
                             </div>
-                            
-                        </div>
-                    @endforeach
-                    </div>                                                                              
+                        @endforeach
                     </div>
-                    
-                @endif
-                <br>
-                <button id="plusImageComic" type="button" class="btn btn-primary">Tambah Jumlah Isi</button>
-                <div id="appendImageComic">
-                    
+                    @endif
                 </div>
-                <div class="mt-5">
-                    <button type="submit" class="btn btn-outline-success">Update Komik</button>
-                </div>
+                
             </div>
-
-
-
+            <div>
+                <button id="editImageComic" type="button" class="btn btn-primary">Ubah Isi Konten Komik</button>
+            </div>
+            <div id="editImageComicForm" style="display: none">
+                <p>Peringatan : Upload Isi harus dari awal</p>
+                <h1>
+                    <button type="button" id="plusImageComic" class="btn btn-secondary">Tambah Isi</button>
+                    <div id="appendImageComic">
+                        
+                    </div>
+                </h1>
+            </div>
+            <div style="margin-top: 20px">
+                <button type="submit" class="btn btn-success">Update Komik</button>
+            </div>
     </form>
 </div>
 @endsection
@@ -82,6 +80,14 @@
         buttonAddImageComic.addEventListener("click", function(){
             var inputGambar = "<input type='file' name='images[]' multiple><br>";
             $("#appendImageComic").append(inputGambar);
+        })
+        const toogleEditImageComic = document.getElementById("editImageComic")
+        const displayEditImageComicForm = document.getElementById("editImageComicForm")
+
+        toogleEditImageComic.addEventListener("click", function(){
+            if (displayEditImageComicForm.style.display === 'none'){
+                displayEditImageComicForm.style.display = 'block';
+            } 
         })
     </script>
     
