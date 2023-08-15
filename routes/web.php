@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\KostController as AdminKostController; 
 use App\Http\Controllers\Admin\FacultyController as AdminFacultyController; 
+use App\Http\Controllers\Admin\ComicController as AdminComicController;
 use App\Http\Controllers\KostController;
 use App\Http\Controllers\KostImageController;
 use App\Http\Controllers\ProfileController;
@@ -46,6 +47,15 @@ Route::middleware(['auth'])->group(function(){
     'create' => 'admin.faculty.create',
     'edit' => 'admin.faculty.edit',
    ]);
+
+   Route::resource('/admin/comic', AdminComicController::class)->names([
+    'index' => 'admin.comic.index',
+    'create' => 'admin.comic.create',
+    'store' => 'admin.comic.store',
+    'destroy' => 'admin.comic.destroy',
+    'edit' => 'admin.comic.edit',
+    'update' => 'admin.comic.update',
+   ])->except('show');
 });
 
 require __DIR__.'/auth.php';

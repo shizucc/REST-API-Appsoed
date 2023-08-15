@@ -29,25 +29,25 @@
             </div>
             
             <div class="mb-2">
-                <label for="descriptionKost" class="form-label"><h4>Deskripsi Fakultas</h4></label>
+                <label for="descriptionFaculty" class="form-label"><h4>Deskripsi Fakultas</h4></label>
                 <p>Panduan Mengisi deskripsi</p>
                 <ul>
                     <li>Tulis deskripsi lengkap</li>
                 </ul>
-                <textarea class="form-control" name="description" id="descriptionKost" rows="3"></textarea>
+                <textarea class="form-control" name="description" id="descriptionFaculty" rows="3"></textarea>
             </div>
 
             <div class="mb-2">
-                <label for="locationKost" class="form-label"><h4>Link Google Maps Fakultas -opsional-</h4></label>
+                <label for="locationFaculty" class="form-label"><h4>Link Google Maps Fakultas -opsional-</h4></label>
                 <p>Panduan Mengisi google maps</p>
                 <ul>
                     <li>Tulis link yang langsung menuju ke google maps</li>
                 </ul>
-                <input type="text" name="location" class="form-control" id="locationKost">
+                <input type="text" name="location" class="form-control" id="locationFaculty">
             </div>
             
             <div class="mb-4">
-                <label for="imageKost" class="form-label"><h4>Foto Fakultas</h4></label>
+                <label for="imageFaculty" class="form-label"><h4>Foto Fakultas</h4></label>
                 <br>
                 <div>
                     <input id="imagefaculty" type="file" name="image" accept="image/*" required><br>

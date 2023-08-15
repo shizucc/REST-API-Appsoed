@@ -80,7 +80,8 @@
                     <div style="display: flex; flex-direction:column; margin-top:20px ">
                     @foreach ($kost->kostImages as $image)
                     <div style="display: flex; flex-direction:column; margin-bottom:20px; margin-right:20px">
-                        <div>   <img src="https://images.unsplash.com/photo-1682687221006-b7fd60cf9dd0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt="">
+                        <div>   
+                            {{-- <img src="https://images.unsplash.com/photo-1682687221006-b7fd60cf9dd0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" alt=""> --}}
                                 <img style="height: 150px" src="{{asset('storage/images/kost/'.$image->image)}}" alt="{{$image->image}}">
                             </div>
                             <div style="display:flex; flex-direction:row">

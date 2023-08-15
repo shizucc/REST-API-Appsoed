@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comic;
+use App\Models\ComicImage;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
@@ -29,7 +30,8 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+
     }
 
     /**
@@ -66,7 +68,15 @@ class ComicController extends Controller
     }
 
     public function image(string $img){
-        $filePath = public_path('storage/images/comic/'.$img);
+        $filePath = public_path('storage/images/comic/content/'.$img);
+        if(!file_exists($filePath)){
+            abort(404);
+        }
+        return response()->file($filePath);
+    }
+
+    public function cover(string $img){
+        $filePath = public_path('storage/images/comic/cover/'.$img);
         if(!file_exists($filePath)){
             abort(404);
         }

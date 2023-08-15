@@ -42,8 +42,9 @@ Route::resource('/kost', KostController::class);
 Route::get('/faculty/image/{img}', [FacultyController::class, 'image'])->name('faculty.image');
 Route::resource('/faculty', FacultyController::class)->except(['show,edit']);
 
-Route::get('/comic/image/{img}', [ComicController::class, 'image'])->name('comic.image');
-Route::resource('/comic', ComicController::class)->only(['index','show']);
+Route::get('/comic/content/{img}', [ComicController::class, 'image'])->name('comic.image');
+Route::get('/comic/cover/{img}', [ComicController::class, 'cover'])->name('comic.cover');
+Route::resource('/comic', ComicController::class)->except(['edit']);
 
 Route::get('/gensoedmerch/image/{img}', [GensoedMerchandiseController::class, 'image'])->name('gensoedmerch.image');
 Route::resource('/gensoedmerch', GensoedMerchandiseController::class)->only(['index','show']);
