@@ -42,7 +42,7 @@
                 @foreach ($comics as $comic)
                     <tr>
                         <td>{{$comic->title}}</td>
-                        <td><img src="{{asset('storage/images/comic/'.$comic->cover) }}" alt="" height="100px"></td>
+                        <td><img src="{{asset('storage/images/comic/cover/'.$comic->cover) }}" alt="" height="100px"></td>
                         <td>Ini file</td>
                         <td>
                             <div style="display: flex; flex-direction:row;">

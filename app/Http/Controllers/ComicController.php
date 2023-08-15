@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comic;
+use App\Models\ComicImage;
 use Illuminate\Http\Request;
 
 class ComicController extends Controller
@@ -29,29 +30,7 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        $request->validate([
-            'title' => 'required',
-        ]);
-        $comic = new Comic;
-        $comic->title = $request->input('title');
-
-        if($request->hasFile('cover')){
-            // Save image into storage
-            $image = $request->file('cover');
-
-            $path_folder = public_path('/storage/images/comic');
-            $image_name = str_replace(' ','', $request->input('title'));
-            $file_name = $image_name.'_'.str_replace(' ','', $image->getClientOriginalName());
-            $image->move($path_folder,$file_name);
-            
-            // save image into database
-            $comic->cover = $file_name;
-            
-        }
         
-        $comic->save();
-        return redirect()->route('admin.comic.index');
 
     }
 

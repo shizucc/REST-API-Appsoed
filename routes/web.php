@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function(){
     'destroy' => 'admin.comic.destroy',
     'edit' => 'admin.comic.edit',
     'update' => 'admin.comic.update',
-   ]);
+   ])->except('show');
 });
 
 require __DIR__.'/auth.php';
