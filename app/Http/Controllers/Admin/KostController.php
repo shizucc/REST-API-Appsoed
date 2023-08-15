@@ -121,9 +121,9 @@ class KostController extends Controller
 
         // update fasilitas : hapus semua fasilitas lalu ganti dengan yang baru
         // Hapus semua fasilitas
-        KostFacility::where('kost_id',$id)->delete();
-
-        if($request->has('facilites')){
+        
+        if($request->has('facilities')){
+            KostFacility::where('kost_id',$id)->delete();
 
             foreach($request->input('facilities') as $facility){
                 if($facility != null){

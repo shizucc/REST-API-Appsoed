@@ -6,7 +6,7 @@
 <div style="width:40%; margin:0 auto">
         <a type="button" class="btn btn-secondary" href="{{route('faculty.index')}}">Kembali</a>
         <h1>Form Fakultas</h1>
-    <form action="{{route('faculty.update',$faculty->id)}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.faculty.update',$faculty->id)}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('put')
             <div class="mb-2">

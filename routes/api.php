@@ -20,14 +20,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('/kost/facility', KostFacilityController::class)->names([
-    'index' => 'kost.facility.index',
-    'create' => 'kost.facility.create',
-    'show' => 'kost.facility.show',
-    'edit' => 'kost.facility.edit',
-    'update' => 'kost.facility.update',
-    'delete' => 'kost.facility.delete',
-]);
+// Route::resource('/kost/facility', KostFacilityController::class)->names([
+//     'index' => 'kost.facility.index',
+//     'create' => 'kost.facility.create',
+//     'show' => 'kost.facility.show',
+//     'edit' => 'kost.facility.edit',
+//     'update' => 'kost.facility.update',
+//     'delete' => 'kost.facility.delete',
+// ]);
 Route::resource('/kost/image', KostImageController::class)->names([
     'index' => 'kost.image.index',
     'create' => 'kost.image.create',
@@ -35,16 +35,16 @@ Route::resource('/kost/image', KostImageController::class)->names([
     'edit' => 'kost.image.edit',
     'update' => 'kost.image.update',
     'delete' => 'kost.image.delete',
-]);
-Route::resource('/kost', KostController::class);
+])->only('show');
+Route::resource('/kost', KostController::class)->only(['index','show']);
 
 
 Route::get('/faculty/image/{img}', [FacultyController::class, 'image'])->name('faculty.image');
-Route::resource('/faculty', FacultyController::class)->except(['show,edit']);
+Route::resource('/faculty', FacultyController::class)->only(['index','show']);
 
 Route::get('/comic/content/{img}', [ComicController::class, 'image'])->name('comic.image');
 Route::get('/comic/cover/{img}', [ComicController::class, 'cover'])->name('comic.cover');
-Route::resource('/comic', ComicController::class)->except(['edit']);
+Route::resource('/comic', ComicController::class)->only(['index','show']);
 
 Route::get('/gensoedmerch/image/{img}', [GensoedMerchandiseController::class, 'image'])->name('gensoedmerch.image');
 Route::resource('/gensoedmerch', GensoedMerchandiseController::class)->only(['index','show']);

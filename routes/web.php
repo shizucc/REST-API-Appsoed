@@ -43,13 +43,16 @@ Route::middleware(['auth'])->group(function(){
         'edit' => 'admin.kosts.edit',
         'update' => 'admin.kosts.update',
    ]);
-   Route::resource('/admin/faculty', AdminFacultyController::class)->only(['index','create','edit'])->names([
-    'index' => 'admin.faculty.index',
-    'create' => 'admin.faculty.create',
-    'edit' => 'admin.faculty.edit',
+   Route::resource('/admin/faculty', AdminFacultyController::class)->except('show')->names([
+        'index' => 'admin.faculty.index',
+        'create' => 'admin.faculty.create',
+        'store' => 'admin.faculty.store',
+        'destroy' => 'admin.faculty.destroy',
+        'edit' => 'admin.faculty.edit',
+        'update' => 'admin.faculty.update',
    ]);
 
-   Route::resource('/admin/comic', AdminComicController::class)->names([
+   Route::resource('/admin/comic', AdminComicController::class)->except('show')->names([
     'index' => 'admin.comic.index',
     'create' => 'admin.comic.create',
     'store' => 'admin.comic.store',
@@ -58,7 +61,7 @@ Route::middleware(['auth'])->group(function(){
     'update' => 'admin.comic.update',
    ])->except('show');
 
-   Route::resource('/admin/gensoedmerch', AdminGensoedMerchandiseController::class)->names([
+   Route::resource('/admin/gensoedmerch', AdminGensoedMerchandiseController::class)->except('show')->names([
     'index' => 'admin.gensoedmerch.index',
     'create' => 'admin.gensoedmerch.create',
     'store' => 'admin.gensoedmerch.store',

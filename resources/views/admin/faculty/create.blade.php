@@ -6,7 +6,7 @@
 <div style="width:40%; margin:0 auto">
         <a type="button" class="btn btn-secondary" href="{{route('admin.kosts.index')}}">Kembali</a>
         <h1>Form Fakultas</h1>
-    <form action="{{route('faculty.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.faculty.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('post')
             <div class="mb-2">
