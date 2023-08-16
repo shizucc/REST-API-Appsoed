@@ -13,7 +13,7 @@ class ComicController extends Controller
      */
     public function index()
     {
-        $comics = Comic::with('comicImages')->get();
+        $comics = Comic::with('comicImages')->orderBy('id','desc')->get();
         return response()->json($comics);
     }
 

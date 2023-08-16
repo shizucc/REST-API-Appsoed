@@ -12,7 +12,7 @@ class GensoedMerchandiseController extends Controller
      */
     public function index()
     {
-        $merchandises = GensoedMerchandise::all();
+        $merchandises = GensoedMerchandise::orderBy('id','desc')->get();
         return response()->json($merchandises);
     }
 

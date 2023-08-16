@@ -14,7 +14,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        $faculties = Faculty::all();
+        $faculties = Faculty::orderBy('id','asc')->get();
         $data = [
             'title' => 'All Faculty',
             'faculties' => Faculty::all()
@@ -148,6 +148,18 @@ class FacultyController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $faculty = Faculty::find($id);
+
+        // Delete Image from storage
+        if($faculty->image !=null){
+            $file_name = $faculty->image;
+            $file_path = public_path('/storage/images/faculty/'.$file_name);
+            if(File::exists($file_path)){
+                File::delete($file_path);
+            }
+        }
+        $faculty->delete();
+
+        return redirect()->route('admin.faculty.index');
     }
 }

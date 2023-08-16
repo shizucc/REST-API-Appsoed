@@ -30,7 +30,6 @@
             <thead>
                 <th>Judul</th>
                 <th>Cover</th>
-                <th>File</th>
                 <th>Aksi</th>
             </thead>
             <tbody>
@@ -38,7 +37,6 @@
                     <tr>
                         <td>{{$comic->title}}</td>
                         <td><img src="{{asset('storage/images/comic/cover/'.$comic->cover) }}" alt="" height="100px"></td>
-                        <td>Ini file</td>
                         <td>
                             <div style="display: flex; flex-direction:row;">
                                 <div style="margin-right: 5px">
