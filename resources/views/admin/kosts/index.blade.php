@@ -24,13 +24,8 @@
     <div style="width: 60%; margin: 0 auto">
         <p>Selamat Datang </p>
         {{-- <img src="{{asset('storage/images/kosts/aademo/kost_01.jpg')}}" alt=""> --}}
-        <form action="{{route('logout')}}" method="post">
-            @csrf
-            @method('post')
-            <button type="submit" href="{{route('logout')}}">Logout</button> 
-        </form>
         <h1>Semua Kost</h1>
-        <a type="button" class="btn btn-primary" href="{{route('admin.kosts.create')}}">Tambah Kost</a>
+        <a type="button" class="btn btn-primary" href="{{route('admin.kost.create')}}">Tambah Kost</a>
         <table class="bordered-table" id="kostTable">
             <thead>
                 <th>Nama Kost</th>
@@ -56,7 +51,7 @@
                                     <a type="button" class="btn btn-primary" href="{{route('kost.show',$kost->id)}}">Detail</a>
                                 </div>
                                 <div style="margin-right: 5px">
-                                    <a type="button" class="btn btn-warning" href="{{route('admin.kosts.edit',$kost->id)}}">Edit</a>
+                                    <a type="button" class="btn btn-warning" href="{{route('admin.kost.edit',$kost->id)}}">Edit</a>
                                 </div>
                                 <div>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalDelete{{$kost->id}}">
@@ -83,7 +78,7 @@
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                            <form action="{{route('admin.kosts.destroy',$kost->id)}}" method="post">
+                            <form action="{{route('admin.kost.destroy',$kost->id)}}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Hapus</button>

@@ -3,10 +3,10 @@
     {{$title}}
 @endsection
 @section('content')
-<div style="width:40%; margin:0 auto">
-        <a type="button" class="btn btn-secondary" href="{{route('admin.kosts.index')}}">Kembali</a>
+<div style="width:40%; margin:0 auto; margin-top:80px">
+        
         <h1>Form Kost</h1>
-    <form action="{{route('admin.kosts.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('admin.kost.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         @method('post')
             <div class="mb-1">

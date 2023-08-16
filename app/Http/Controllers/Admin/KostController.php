@@ -167,7 +167,7 @@ class KostController extends Controller
             }
         }
         $kost->save();
-        return redirect()->route('kost.show',$kost->id);
+        return redirect()->route('admin.kost.index');
     }
 
     /**
@@ -188,6 +188,6 @@ class KostController extends Controller
  
         $kost->delete();
 
-        return redirect()->route('admin.kosts.index');
+        return redirect()->route('admin.kost.index');
     }
 }

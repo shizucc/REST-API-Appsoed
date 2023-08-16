@@ -3,8 +3,8 @@
     {{$title}}
 @endsection
 @section('content')
-<div style="width:40%; margin:0 auto">
-        <a type="button" class="btn btn-secondary" href="{{route('admin.gensoedmerch.index')}}">Kembali</a>
+<div style="width:40%; margin:0 auto; margin-top:80px">
+        
         <h1>Form Gensoed Merch</h1>
     <form action="{{route('admin.gensoedmerch.store')}}" method="post" enctype="multipart/form-data">
         @csrf

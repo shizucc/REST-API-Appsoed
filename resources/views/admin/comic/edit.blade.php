@@ -3,9 +3,8 @@
     {{$title}}
 @endsection
 @section('content')
-<div style="width:40%; margin:0 auto">
+<div style="width:40%; margin:0 auto; margin-top:80px">
     
-        <a type="button" class="btn btn-secondary" href="{{route('admin.comic.index')}}">Kembali</a>
         <h1>Form Edit Komik</h1>
     <form action="{{route('admin.comic.update',$comic->id)}}" method="post" enctype="multipart/form-data">
         @csrf

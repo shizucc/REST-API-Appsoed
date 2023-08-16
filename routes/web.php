@@ -25,7 +25,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return redirect()->route('admin.kosts.index');
+    return redirect()->route('admin.kost.index');
 })->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
@@ -35,13 +35,13 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware(['auth'])->group(function(){
-   Route::resource('/admin/kosts', AdminKostController::class)->except(['show'])->names([
-        'index' => 'admin.kosts.index',
-        'create' => 'admin.kosts.create',
-        'store' => 'admin.kosts.store',
-        'destroy' => 'admin.kosts.destroy',
-        'edit' => 'admin.kosts.edit',
-        'update' => 'admin.kosts.update',
+   Route::resource('/admin/kost', AdminKostController::class)->except(['show'])->names([
+        'index' => 'admin.kost.index',
+        'create' => 'admin.kost.create',
+        'store' => 'admin.kost.store',
+        'destroy' => 'admin.kost.destroy',
+        'edit' => 'admin.kost.edit',
+        'update' => 'admin.kost.update',
    ]);
    Route::resource('/admin/faculty', AdminFacultyController::class)->except('show')->names([
         'index' => 'admin.faculty.index',

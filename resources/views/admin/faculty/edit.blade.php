@@ -3,8 +3,8 @@
     {{$title}}
 @endsection
 @section('content')
-<div style="width:40%; margin:0 auto">
-        <a type="button" class="btn btn-secondary" href="{{route('faculty.index')}}">Kembali</a>
+<div style="width:40%; margin:0 auto; margin-top:80px">
+        
         <h1>Form Fakultas</h1>
     <form action="{{route('admin.faculty.update',$faculty->id)}}" method="post" enctype="multipart/form-data">
         @csrf

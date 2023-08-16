@@ -24,11 +24,6 @@
     <div style="width: 60%; margin: 0 auto">
         <p>Selamat Datang </p>
         {{-- <img src="{{asset('storage/images/kosts/aademo/kost_01.jpg')}}" alt=""> --}}
-        <form action="{{route('logout')}}" method="post">
-            @csrf
-            @method('post')
-            <button type="submit" href="{{route('logout')}}">Logout</button> 
-        </form>
         <h1>Semua Fakultas</h1>
         <a type="button" class="btn btn-primary" href="{{route('admin.faculty.create')}}">Tambah Fakultas</a>
         <table class="bordered-table" id="kostTable">
@@ -79,7 +74,7 @@
                             <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                            <form action="{{route('faculty.destroy',$faculty->id)}}" method="post">
+                            <form action="{{route('admin.faculty.destroy',$faculty->id)}}" method="post">
                                 @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger">Hapus</button>
